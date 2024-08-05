@@ -1,7 +1,7 @@
 
 import './App.css';
 //import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, Routes, Link} from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Link, NavLink} from 'react-router-dom';
 const ExpenseDashbordPage = () => (
   <div>
     This is Dashbord.
@@ -30,10 +30,10 @@ const NotFound = () => (
 const Header = () => (
   <header>
      <h1>Expensify</h1>
-     <Link to='/'>Home</Link>&nbsp;&nbsp;
-     <Link to='/create'>Create</Link>&nbsp;&nbsp;
-     <Link to='/edit'>Edit</Link>&nbsp;&nbsp;
-     <Link to='/help'>Help</Link>
+     <NavLink to='/' className={({ isActive}) => isActive ? "active" : "" } >Home</NavLink>&nbsp;&nbsp;
+     <NavLink to='/create' className={({ isActive}) => isActive ? "active" : "" }>Create</NavLink>&nbsp;&nbsp;
+     <NavLink to='/edit' className={({ isActive}) => isActive ? "active" : "" }>Edit</NavLink>&nbsp;&nbsp;
+     <NavLink to='/help'className={({ isActive}) => isActive ? "active" : "" }>Help</NavLink>
   </header>
 )
 function App() {
