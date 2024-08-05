@@ -1,41 +1,11 @@
 import React from 'react';
-// import './App.css';
-//import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, Routes, Link, NavLink} from 'react-router-dom';
-const ExpenseDashbordPage = () => (
-    <div>
-      This is Dashbord.
-    </div>
-  );
-  const CreatePage = () => (
-    <div>
-      This is CreateExpensify.
-    </div>
-  );
-  const EditPage = () => (
-    <div>
-      This is EditExpensify.
-    </div>
-  );
-  const HelpPage = () => (
-    <div>
-      This is Help.
-    </div>
-  );
-  const NotFound = () => (
-    <div>
-      404 - <Link to='/'>Go Home</Link>.
-    </div>
-  );
-  const Header = () => (
-    <header>
-       <h1>Expensify</h1>
-       <NavLink to='/' className={({ isActive}) => isActive ? "active" : "" } >Home</NavLink>&nbsp;&nbsp;
-       <NavLink to='/create' className={({ isActive}) => isActive ? "active" : "" }>Create</NavLink>&nbsp;&nbsp;
-       <NavLink to='/edit' className={({ isActive}) => isActive ? "active" : "" }>Edit</NavLink>&nbsp;&nbsp;
-       <NavLink to='/help'className={({ isActive}) => isActive ? "active" : "" }>Help</NavLink>
-    </header>
-  )
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import ExpenseDashbordPage from '../components/ExpenseDashbordPage';
+import CreatePage from '../components/CreatePage';
+import EditPage from '../components/EditPage';
+import HelpPage from '../components/HelpPage';
+import NotFound from '../components/NotFound';
+import Header from '../components/Header';
   function AppRouter() {
   
     return (
