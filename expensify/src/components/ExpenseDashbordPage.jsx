@@ -1,6 +1,8 @@
+import ConnectedExpenseList from "./ExpenseList";
+
 const ExpenseDashbordPage = () => (
     <div>
-      This is Dashbord.
+      <ConnectedExpenseList />
     </div>
   );
   export default ExpenseDashbordPage;

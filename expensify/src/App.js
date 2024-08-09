@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {Provider} from 'react-redux';
 import './App.css';
 import AppRouter from './routers/AppRouter';
 import configurestore from './store/configurestore';
@@ -15,14 +15,18 @@ function App(){
   store.dispatch(addExpense({description:'water bill'}))
   store.dispatch(addExpense({description:'gas bill'}))
   store.dispatch(setTextFilter('gas'))
-
+  setTimeout(() => {
+    store.dispatch(setTextFilter('rent'))
+  },3000)
  const state = store.getState();
  const visibleExpenses = getVisibleExpenses(state.expenses,state.filters)
  console.log(visibleExpenses);
   return (
     <div className="App">
-
+      <Provider store={store}>
       <AppRouter />
+      </Provider>
+    
  </div>
     );
   }
