@@ -6,7 +6,7 @@ export default class ExpenseForm extends React.Component{
     state = {
         description: '',
         amount:'',
-        createAt:'',
+        createdAt:'',
         error:''
     }
     onDescriptionChange = (e) => {
@@ -20,27 +20,33 @@ export default class ExpenseForm extends React.Component{
         }
     }
     onDateChange = (e) => {
-        const createAt = e.target.value;
-        this.setState(() => ({createAt}))
+        const createdAt = e.target.value;
+        this.setState(() => ({createdAt}))
 
     }
     onSubmit= (e) => {
         e.preventDefault();
-        if(!this.state.description || !this.state.amount || !this.state.createAt){
+        if(!this.state.description || !this.state.amount || !this.state.createdAt){
             this.setState(() =>({error:'please provide descrpition and amount and date'}))
         } else {
             this.setState(()=>({error:''}))
-            console.log("submitted")
+            this.props.onSubmit({
+                description:this.state.description,
+                amount:parseFloat(this.state.amount, 10)* 100,
+                createdAt: this.state.createdAt
+
+            })
+            console.log("submitted!")
         }
     }
     render(){
         return(
             <div>
-                <p>{this.state.error}</p>
+              {this.state.error &&  <p>{this.state.error}</p>}
               <form onSubmit={this.onSubmit}>
                 <input type='text' placeholder="Description" autoFocus value={this.state.description} onChange={this.onDescriptionChange}/><br/><br/>
                 <input type='number' placeholder="Amount" value={this.state.amount} onChange={this.onAmountChange}/><br/><br/>
-                <input type="date" value={this.state.createAt} onChange={this.onDateChange}></input><br/><br/>
+                <input type="date" value={this.state.createdAt} onChange={this.onDateChange}></input><br/><br/>
                 
                 <button>Add Expense</button>
                
