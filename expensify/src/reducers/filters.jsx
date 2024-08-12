@@ -21,7 +21,7 @@ export default(state = filtersRedusersDefaultState, action) =>
                 return {
                   ...state,
                   sortBy: 'date'
-                };
+                };  
         case 'SET_START_DATE':
             return {
                 ...state,
