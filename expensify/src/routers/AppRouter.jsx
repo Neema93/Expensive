@@ -19,7 +19,7 @@ import Header from '../components/Header';
         <Routes>
           <Route path="/" Component={ExpenseDashbordPage} />
           <Route path="/create" Component={CreatePage} /> 
-          <Route path="/edit/:id" Component={EditPage} /> 
+          <Route path="/edit/:id/:description/:amount/:createdAt"  Component={EditPage } /> 
           <Route path="/help" Component={HelpPage} />
           <Route  path="*" Component={NotFound} />
           </Routes>
