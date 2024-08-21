@@ -12,3 +12,9 @@ test('should setup Amount filter action object', () => {
    type: 'SORT_BY_AMOUNT'
    });
 })
+test('should setup Date filter action object', () => {
+    const action = sortByDate();
+   expect(action).toEqual({
+  type: 'SORT_BY_DATE'
+   });
+})
