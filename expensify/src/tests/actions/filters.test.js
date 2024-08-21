@@ -6,3 +6,9 @@ test('should setup setText filter action object', () => {
     text: {Text:'milk'}
    });
 })
+test('should setup Amount filter action object', () => {
+    const action = sortByAmount();
+   expect(action).toEqual({
+   type: 'SORT_BY_AMOUNT'
+   });
+})
