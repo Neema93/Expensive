@@ -6,6 +6,7 @@ import configurestore from './store/configurestore';
 import {addExpense} from './actions/expenses';
 import {setTextFilter} from './actions/filters';
 import getVisibleExpenses from './selectors/expenses';
+import './style/style.scss'
 // import store from './playground/redux-101';
 // import person from './playground/destructuring';
 //import demoState from './playground/redux-expensify';

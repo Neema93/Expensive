@@ -6,6 +6,7 @@ import EditPage from '../components/EditPage';
 import HelpPage from '../components/HelpPage';
 import NotFound from '../components/NotFound';
 import Header from '../components/Header';
+import LoginPage from '../components/Login';
   function AppRouter() {
   
     return (
@@ -17,7 +18,8 @@ import Header from '../components/Header';
   
         </div>
         <Routes>
-          <Route path="/" Component={ExpenseDashbordPage} />
+          <Route path="/" Component={LoginPage} />
+          <Route path="/dashbord" Component={ExpenseDashbordPage}/>
           <Route path="/create" Component={CreatePage} /> 
           <Route path="/edit/:id/:description/:amount/:createdAt"  Component={EditPage } /> 
           <Route path="/help" Component={HelpPage} />
