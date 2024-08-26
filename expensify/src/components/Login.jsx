@@ -5,7 +5,7 @@ const LoginPage = () => (
             <p>It's time to your expenses under control.</p>
             <input type="text" placeholder="username" />
             <input type="password" placeholder="password" />
-        <button>Login</button>
+        <button className="login_button">Login</button>
         </div>
         
     </div>
