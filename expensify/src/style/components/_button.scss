@@ -1,6 +1,6 @@
 .login_button{
   align-items: center;
-  background-color: #0276FF;
+  background-color: #1C84FF;
   border-radius: 8px;
   border-style: none;
   box-shadow: rgba(255, 255, 255, 0.26) 0 1px 2px inset;
@@ -10,11 +10,11 @@
   text-align: center;
   touch-action: manipulation;
 }
-    
+
 .blogin_button:active {
-  background-color: #006AE8;
+  background-color: #1C84FF;
 }
 
 .login_button:hover {
-  background-color: #1C84FF;
+  background-color: #006AE8;
 }
