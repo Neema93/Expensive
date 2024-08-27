@@ -5,7 +5,8 @@ export default () => {
     const store = createStore(
         combineReducers({
             expenses:expensesReducer,
-            filters:filtersRedusers
+            filters:filtersRedusers,
+          
         })
     );
     return store;

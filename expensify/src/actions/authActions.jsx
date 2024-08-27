@@ -28,6 +28,7 @@ export const login = (credentials) => async (dispatch) => {
   dispatch(loginRequest());
   try {
     // Replace with your login API call
+    const fakeLoginApi = '';
     const response = await fakeLoginApi(credentials);
     dispatch(loginSuccess(response.user));
   } catch (error) {
