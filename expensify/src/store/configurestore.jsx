@@ -2,6 +2,7 @@ import { legacy_createStore as createStore, combineReducers,applyMiddleware} fro
 import expensesReducer from "../reducers/expenses";
 import filtersRedusers from "../reducers/filters"
 import authReducer from '../reducers/auth';
+import userReducer from '../reducers/user';
 import {thunk} from 'redux-thunk';
 export default () => {
     // const storeAuth = createStore(authReducer, applyMiddleware(thunk));
@@ -10,9 +11,9 @@ export default () => {
             expenses:expensesReducer,
             filters:filtersRedusers,
             auth:authReducer,
+            user:userReducer
             
-        },
-        applyMiddleware(thunk))
+        })
     );
     return store;
 }
