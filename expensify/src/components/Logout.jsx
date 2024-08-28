@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { logout } from '../actions/authActions';
+import { logout } from '../actions/auth';
 
 const Logout = () => {
   const dispatch = useDispatch();

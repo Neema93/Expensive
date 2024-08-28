@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { login } from '../actions/authActions';
+import { login } from '../actions/auth';
 const LoginPage = () => {
     const [credentials, setCredentials] = useState({ username: '', password: '' });
     const dispatch = useDispatch();
