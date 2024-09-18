@@ -1,19 +1,22 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { login } from '../actions/auth';
-const LoginPage = () => {
+
+const LoginPage = (props) => {
     const [credentials, setCredentials] = useState({ username: '', password: '' });
-    const dispatch = useDispatch();
-    const { loading, error } = useSelector((state) => state);
+    // const dispatch = useDispatch();
+    const {  error } = useSelector((state) => state);
 
     const handleChange = (e) => {
+
         const { name, value } = e.target;
-        setCredentials({ ...credentials, [name]: value });
+     setCredentials({ ...credentials, [name]: value });
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(login(credentials));
+        // props.dispatch(login(credentials))
+       
+        // dispatch(login(credentials));
     };
 
     return (
@@ -22,6 +25,7 @@ const LoginPage = () => {
                 <h1 className="box-layout__title">Expensify</h1>
                 <p>It's time to your expenses under control.</p>
                 <form onSubmit={handleSubmit}>
+                    
                     <input type="text"
                         name="username"
                         placeholder="Username"
@@ -32,7 +36,7 @@ const LoginPage = () => {
                         placeholder="Password"
                         value={credentials.password}
                         onChange={handleChange} />
-                    <button className="login_button"type="submit" disabled={loading}>Login</button>
+                    <button className="login_button"type="submit" >Login</button>
 
                 </form>
                 {error && <p>{error}</p>}

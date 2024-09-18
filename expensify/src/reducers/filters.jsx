@@ -4,6 +4,7 @@ const filtersRedusersDefaultState = {
     startDate: undefined,
     endDate:undefined
 };
+// eslint-disable-next-line import/no-anonymous-default-export
 export default(state = filtersRedusersDefaultState, action) =>
 {
     switch(action.type){  

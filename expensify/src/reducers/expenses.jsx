@@ -1,4 +1,5 @@
 const expensesReduserDefaultState =[];
+// eslint-disable-next-line import/no-anonymous-default-export
 export default(state =expensesReduserDefaultState , action) => {
     switch(action.type){ 
         case 'ADD_EXPENSE':
