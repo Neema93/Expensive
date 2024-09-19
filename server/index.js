@@ -33,10 +33,11 @@ app.get("/users/:user_name",async(req,res) =>{
   }
 });
 // get expenses by user id
-app.get("/expenses/:user_id",async(req,res) =>{
+app.get("/expenses/:userId",async(req,res) =>{
   try {
     const { userId } = req.params;
-    const getExpenses = await pool.query("SELECT * FORM expenses WHERE user_id = $1 ",[ userId ]);
+    const getExpenses = await pool.query("SELECT * FROM expenses WHERE user_id = $1 ",[ userId ]);
+    console.log(getExpenses.rows);
     res.json(getExpenses.rows);
 
   } catch (err) {
@@ -60,8 +61,9 @@ app.put("/expenses/:id",async(req,res) => {
   try {
     const { id } = req.params;
     const { description } = req.body;
-    const updateexpenses = await pool.query("UPDATE expenses SET description = $1 WHERE id = $2",[description,id]);
-    res.json(updateexpenses);
+    const { amount } = req.body;
+    const updateexpenses = await pool.query("UPDATE expenses SET description = $1 , amount = $2 WHERE id = $3",[description,amount,id]);
+    res.json(updateexpenses.rows);
   } catch (err) {
     console.log(err.message);
   }
@@ -71,7 +73,7 @@ app.put("/expenses/:id",async(req,res) => {
 app.delete("/expenses/:id",async(req,res) => {
   try {
     const { id } = req.params;
-    const deleteexpenses = await pool.query("DELETE FROM expenses WHERE id = $1" [id]);
+    const deleteexpenses = await pool.query("DELETE FROM expenses WHERE id = $1", [id]);
     res.json(deleteexpenses);
   } catch (err) {
     console.log(err.message);
