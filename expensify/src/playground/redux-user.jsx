@@ -17,6 +17,20 @@ const editUser = (id , update) =>({
     update
 
 })
+const loginsuccess = (userName ,password) => ({
+    type: 'LOGINSUCCESS',
+    userName,
+    password
+})
+
+const loginFail = () =>({
+    type: 'LOGINFAIL'
+
+})
+
+const logout = () =>({
+    type: 'LOGOUT'
+})
 
 const userReduserDefaultState =[];
 const userReducer = (state =userReduserDefaultState , action) => {
@@ -40,6 +54,33 @@ const userReducer = (state =userReduserDefaultState , action) => {
             return state;
     }
 };
+const loginRedusersDefaultState = {
+        userName:'',
+        password: ''
+};
+const filtersRedusers =(state = loginRedusersDefaultState, action) =>
+{
+    switch(action.type){  
+        case 'LOGINSUCCESS':
+            return{
+                ...state,
+                text:action.text
+            };
+        case 'LOGINFAIL':
+            return{
+                ...state,
+                sortBy: "amount"
+            };
+        case 'LOGOUT':  
+        return{
+            ...state,
+            sortBy: "date"
+        }; 
+       
+        default:
+            return state;
+    }
+}
 
 const store = createStore(
     combineReducers({
