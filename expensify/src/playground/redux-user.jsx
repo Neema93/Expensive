@@ -55,33 +55,39 @@ const userReducer = (state =userReduserDefaultState , action) => {
     }
 };
 const loginRedusersDefaultState = {
-        userName:'',
-        password: ''
+      user:{}
 };
 const filtersRedusers =(state = loginRedusersDefaultState, action) =>
 {
     switch(action.type){  
         case 'LOGINSUCCESS':
             return{
-                ...state,
-                text:action.text
+               user:action.user
             };
         case 'LOGINFAIL':
             return{
-                ...state,
-                sortBy: "amount"
+               user:{}
             };
         case 'LOGOUT':  
         return{
-            ...state,
-            sortBy: "date"
+            user:{}
         }; 
        
         default:
             return state;
     }
 }
+const getVisibleUser = (user, {userName, password}) =>{
+    return expenses.filter(() => {
 
+        const userMatch = expense.description.toLowerCase().includes(text.toLowerCase());
+        return startDateMatch && endDateMatch && textMatch; 
+    }).sort((a,b) => {
+        if(sortBy === 'date'){
+            return a.createdAt < b.createdAt ? 1 : -1;
+        }
+    })
+}
 const store = createStore(
     combineReducers({
         user:userReducer,
