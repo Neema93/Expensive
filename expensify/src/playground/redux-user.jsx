@@ -1,8 +1,9 @@
 import { legacy_createStore as createStore, combineReducers } from "redux";
-
+import {v1 as uuid} from 'uuid';
 const addUser = ({userName = '', password = ''} = {}) =>({
     type: 'ADD_USER',
     user:{
+      id:uuid(),
       userName ,
       password
     }
@@ -57,7 +58,7 @@ const userReducer = (state =userReduserDefaultState , action) => {
 const loginRedusersDefaultState = {
       user:{}
 };
-const filtersRedusers =(state = loginRedusersDefaultState, action) =>
+const authRedusers =(state = loginRedusersDefaultState, action) =>
 {
     switch(action.type){  
         case 'LOGINSUCCESS':
@@ -77,20 +78,39 @@ const filtersRedusers =(state = loginRedusersDefaultState, action) =>
             return state;
     }
 }
-const getVisibleUser = (user, {userName, password}) =>{
-    return expenses.filter(() => {
+const getVisibleUser = (user, {userName = '' , password= ''}) =>{
+    return user.filter((user) => {
 
-        const userMatch = expense.description.toLowerCase().includes(text.toLowerCase());
-        return startDateMatch && endDateMatch && textMatch; 
-    }).sort((a,b) => {
-        if(sortBy === 'date'){
-            return a.createdAt < b.createdAt ? 1 : -1;
-        }
+        const userNameMatch = user.userName.toLowerCase().includes(userName.toLowerCase());
+        const passwordMatch = user.password.toLowerCase().includes(password.toLowerCase());
+        return userNameMatch && passwordMatch; 
     })
 }
 const store = createStore(
     combineReducers({
         user:userReducer,
+        auth:authRedusers
 
     })
 );
+store.subscribe(() => {
+    const state = store.getState();
+    const VisibleUser = getVisibleUser(state.user, state.auth);
+    console.log(VisibleUser);
+})
+const userOne = store.dispatch(addUser({userName:'Neema',password:'123'}))
+const userTwo= store.dispatch(addUser({userName:'heeya',password:'123'}))
+store.dispatch(removeUser({id: userOne.user.id }))
+store.dispatch(editUser(userTwo.user.id, {password: '567'}))
+store.dispatch(loginsuccess('Neema','123'));
+const demoState = {
+    user: [{
+      userName : 'Meet',
+      password :'123'
+    }],
+    auth:{
+          userName : 'Meet',
+      password :'123'
+    }
+};
+export default demoState;

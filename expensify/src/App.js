@@ -15,10 +15,11 @@ import './style/style.scss'
 // import store from './playground/redux-101';
 // import person from './playground/destructuring';
 //import demoState from './playground/redux-expensify';
+import demoState from './playground/redux-user';
 
 function App(){
 
-
+console.log(demoState)
 
   const store = configurestore();
   store.dispatch(addExpense({description:'water bill',amount: 4500,createdAt: '2000-02-08'}))
