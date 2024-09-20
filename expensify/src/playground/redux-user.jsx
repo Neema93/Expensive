@@ -140,12 +140,12 @@ store.subscribe(() => {
 //       dispatch(loginFailure(error.message));
 //     }
 //   };
-const loginUser = () => {
+const loginUser = (credentials) => {
     return async (dispatch) => {
     //    console.log(credentials)
         try {
-            const userName = "Neema";
-            const response = await fetch(`http://localhost:9000/users/${userName}`);
+            // const userName = "Neema";
+            const response = await fetch(`http://localhost:9000/users/${credentials.userName}`);
                 // , {
             //     method: 'GET',
             //     // headers: { 'Content-Type': 'application/json' },
@@ -167,7 +167,7 @@ const loginUser = () => {
         }
     };
 };
-  store.dispatch(loginUser());
+  store.dispatch(loginUser({userName:"Neema"}));
 const demoState = {
     user: [{
       userName : 'Meet',
