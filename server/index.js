@@ -20,6 +20,18 @@ app.post("/users",async(req,res) => {
     console.log(err.message);
   }
 });
+//get all user
+app.get("/users",async(req,res) =>{
+  try {
+    // eslint-disable-next-line camelcase
+  
+    // eslint-disable-next-line camelcase
+    const getUser = await pool.query("SELECT * FROM users  ");
+    res.json(getUser.rows);
+  } catch (err) {
+    console.log(err.message);
+  }
+});
 //get user by name
 app.get("/users/:user_name",async(req,res) =>{
   try {

@@ -1,5 +1,13 @@
 import { legacy_createStore as createStore, combineReducers } from "redux";
 import {v1 as uuid} from 'uuid';
+import { createAsyncThunk } from '@reduxjs/toolkit'
+import { useDispatch } from 'react-redux';
+
+export const fetchUsers = createAsyncThunk("fetchTodos", async () => {
+    const res = await fetch(`https://localhost:9000/users`);
+    return res?.json();
+ });
+ console.log(fetchUsers());
 const addUser = ({userName = '', password = ''} = {}) =>({
     type: 'ADD_USER',
     user:{
@@ -78,25 +86,25 @@ const authRedusers =(state = loginRedusersDefaultState, action) =>
             return state;
     }
 }
-const getVisibleUser = (user, {userName = '' , password= ''}) =>{
-    return user.filter((user) => {
+// const getVisibleAuth = (user, {userName = '' , password= ''}) =>{
+//     return user.filter((user) => {
 
-        const userNameMatch = user.userName.toLowerCase().includes(userName.toLowerCase());
-        const passwordMatch = user.password.toLowerCase().includes(password.toLowerCase());
-        return userNameMatch && passwordMatch; 
-    })
-}
+//         const userNameMatch = user.userName.toLowerCase().includes(userName.toLowerCase());
+//         const passwordMatch = user.password.toLowerCase().includes(password.toLowerCase());
+//         return userNameMatch && passwordMatch; 
+//     })
+// }
 const store = createStore(
     combineReducers({
-        user:userReducer,
-        auth:authRedusers
+        user:userReducer
+    
 
     })
 );
 store.subscribe(() => {
     const state = store.getState();
-    const VisibleUser = getVisibleUser(state.user, state.auth);
-    console.log(VisibleUser);
+    // const VisibleUser = getVisibleUser(state.user);
+    console.log(state);
 })
 const userOne = store.dispatch(addUser({userName:'Neema',password:'123'}))
 const userTwo= store.dispatch(addUser({userName:'heeya',password:'123'}))
