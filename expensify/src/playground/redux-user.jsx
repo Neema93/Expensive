@@ -1,27 +1,30 @@
 import { legacy_createStore as createStore, combineReducers ,applyMiddleware} from "redux";
 import {v1 as uuid} from 'uuid';
 import {thunk} from 'redux-thunk';
+import axios from 'axios';
+const API_URL = 'http://localhost:9000/users';
 
 
 
-const addUser = ({userName = '', password = ''} = {}) =>({
-    type: 'ADD_USER',
-    user:{
-      id:uuid(),
-      userName ,
-      password
-    }
-})
-const removeUser =({id} = {}) => ({
-    type: 'REMOVE_USER',
-    id
-})
-const editUser = (id , update) =>({
-    type: 'EDIT_USER',
-    id,
-    update
-
-})
+export const fetchUsers = () => async (dispatch) => {
+    const response = await axios.get(API_URL);
+    dispatch({ type: 'FETCH_USERS', payload: response.data });
+  };
+  
+  export const addUser = (user) => async (dispatch) => {
+    const response = await axios.post(API_URL, user);
+    dispatch({ type: 'ADD_USER', payload: response.data });
+  };
+  
+  export const updateUser = (user) => async (dispatch) => {
+    const response = await axios.put(`${API_URL}/${user.id}`, user);
+    dispatch({ type: 'UPDATE_USER', payload: response.data });
+  };
+  
+  export const deleteUser = (id) => async (dispatch) => {
+    await axios.delete(`${API_URL}/${id}`);
+    dispatch({ type: 'DELETE_USER', payload: id });
+  };
  
 const loginSuccess = (user) => ({
     type: 'LOGIN_SUCCESS',
@@ -36,29 +39,33 @@ const loginFailure = (error) => ({
   });
   // Example of an asynchronous login action
 
-const userReduserDefaultState =[];
-const userReducer = (state =userReduserDefaultState , action) => {
-    switch(action.type){ 
-        case 'ADD_USER':
-               return  [...state,action.user];
-        case 'REMOVE_USER':
-            return state.filter(({id}) => id !== action.id  )
-        case 'EDIT_USER':
-            return state.map((user)=>{
-                if(user.id === action.id){
-                    return{
-                        ...user,
-                        ...action.update
-                    }
-                }else {
-                    return user;
-                }
-            })
-        default:
-            return state;
+  const initialStateUser = {
+    users: [],
+  };
+  
+  const userReducer = (state = initialStateUser, action) => {
+    switch (action.type) {
+      case 'FETCH_USERS':
+        return { ...state, users: action.payload };
+      case 'ADD_USER':
+        return { ...state, users: [...state.users, action.payload] };
+      case 'UPDATE_USER':
+        return {
+          ...state,
+          users: state.users.map(user =>
+            user.id === action.payload.id ? action.payload : user
+          ),
+        };
+      case 'DELETE_USER':
+        return {
+          ...state,
+          users: state.users.filter(user => user.id !== action.payload),
+        };
+      default:
+        return state;
     }
-};
-
+  };
+  
 const initialState = {
     isAuthenticated: false,
     user: null,
@@ -119,14 +126,15 @@ const store = createStore(
 store.subscribe(() => {
     const state = store.getState();
     // const VisibleUser = getVisibleAuth(state.user);
-    console.log(state);
+    console.log(state.auth);
+    console.log(state.user)
     // console.log(VisibleUser);
 })
 
-
-// const userOne = store.dispatch(addUser({userName:'Neema',password:'123'}))
-// const userTwo= store.dispatch(addUser({userName:'heeya',password:'123'}))
-// store.dispatch(removeUser({id: userOne.user.id }))
+store.dispatch(fetchUsers())
+// const userOne = store.dispatch(addUser({user_username:'Prish',user_password:'123'}))
+//const userTwo= store.dispatch(addUser({userName:'heeya',password:'123'}))
+// store.dispatch(deleteUser({id: '1' }))
 // store.dispatch(editUser(userTwo.user.id, {password: '567'}))
 
 // const login = (credentials) => async (dispatch) => {
@@ -142,10 +150,8 @@ store.subscribe(() => {
 //   };
 const loginUser = (credentials) => {
     return async (dispatch) => {
-    //    console.log(credentials)
         try {
-            // const userName = "Neema";
-            const response = await fetch(`http://localhost:9000/users/${credentials.userName}`);
+            const response = await axios.get(`${API_URL}/${credentials}`);
                 // , {
             //     method: 'GET',
             //     // headers: { 'Content-Type': 'application/json' },
@@ -155,10 +161,12 @@ const loginUser = (credentials) => {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
             const data = await response.json();
-            console.log(data);
-           
             if (response.ok) {
-                dispatch(loginSuccess(data.user));
+                if(data.user_username === credentials.userName && data.user_password === credentials.password){
+                    dispatch(loginSuccess(data));
+                } else {
+                    dispatch(loginFailure(data.error));
+                }  
             } else {
                 dispatch(loginFailure(data.error));
             }
@@ -167,7 +175,9 @@ const loginUser = (credentials) => {
         }
     };
 };
-  store.dispatch(loginUser({userName:"Neema"}));
+  store.dispatch(loginUser({userName:"Neema" , password: '123'}));
+  store.dispatch(logout())
+  
 const demoState = {
     user: [{
       userName : 'Meet',
