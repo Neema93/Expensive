@@ -1,0 +1,34 @@
+export const loginSuccess = (user) => ({
+    type: 'LOGIN_SUCCESS',
+    payload: user,
+  });
+export const loginFailure = (error) => ({
+    type: 'LOGIN_FAILURE',
+    payload: error,
+  });
+  export const logout = () => ({
+    type: 'LOGOUT',
+  });
+  const loginUser = (credentials) => {
+    return async (dispatch) => {
+        try {
+            const response = await axios.get(`http://localhost:9000/users/${credentials.userName}`);
+            console.log(response.data)
+            if (response.status !== 200) {
+              
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            if (response.status === 200) {
+                if(response.data.user_username === credentials.userName && response.data.user_password === credentials.password){
+                    dispatch(loginSuccess(response.data));
+                } else {
+                     dispatch(loginFailure(response.data.error));
+                }  
+            } else {
+                dispatch(loginFailure(response.data.error));
+            }
+        } catch (error) {
+            dispatch(loginFailure(error.message));
+        }
+    };
+};

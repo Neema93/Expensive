@@ -1,5 +1,5 @@
 import { legacy_createStore as createStore, combineReducers ,applyMiddleware} from "redux";
-
+import {v1 as uuid} from 'uuid';
 import {thunk} from 'redux-thunk';
 import axios from 'axios';
 const API_URL = 'http://localhost:9000/users';
@@ -99,22 +99,6 @@ const initialState = {
         return state;
     }
   };
-  
-
-  
-// const getVisibleAuth = (user,isLogin, {userName = '' , password= ''}) =>{
-//     return user.filter((user) => {
-
-//         const userNameMatch = user.userName.toLowerCase().includes(userName.toLowerCase());
-//         const passwordMatch = user.password.toLowerCase().includes(password.toLowerCase());
-//         if(userNameMatch && passwordMatch) {
-//             return isLogin = true; 
-//         }else {
-//             isLogin = false;
-//         }
-     
-//     })
-// }
 const store = createStore(
     combineReducers({
         user:userReducer,
@@ -131,8 +115,8 @@ store.subscribe(() => {
     // console.log(VisibleUser);
 })
 
-store.dispatch(fetchUsers())
-// const userOne = store.dispatch(addUser({user_username:'Prish',user_password:'123'}))
+// store.dispatch(fetchUsers())
+// const userOne = store.dispatch(addUser({user_username:'Prisha',user_password:'123'}))
 //const userTwo= store.dispatch(addUser({userName:'heeya',password:'123'}))
 // store.dispatch(deleteUser({id: '1' }))
 // store.dispatch(editUser(userTwo.user.id, {password: '567'}))
@@ -151,32 +135,28 @@ store.dispatch(fetchUsers())
 const loginUser = (credentials) => {
     return async (dispatch) => {
         try {
-            const response = await axios.get(`${API_URL}/${credentials}`);
-                // , {
-            //     method: 'GET',
-            //     // headers: { 'Content-Type': 'application/json' },
-            //     // body: JSON.response(credentials),
-            // });
-            if (!response.ok) {
+            const response = await axios.get(`http://localhost:9000/users/${credentials.userName}`);
+            console.log(response.data)
+            if (response.status !== 200) {
+              
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
-            const data = await response.json();
-            if (response.ok) {
-                if(data.user_username === credentials.userName && data.user_password === credentials.password){
-                    dispatch(loginSuccess(data));
+            if (response.status === 200) {
+                if(response.data.user_username === credentials.userName && response.data.user_password === credentials.password){
+                    dispatch(loginSuccess(response.data));
                 } else {
-                    dispatch(loginFailure(data.error));
+                     dispatch(loginFailure(response.data.error));
                 }  
             } else {
-                dispatch(loginFailure(data.error));
+                dispatch(loginFailure(response.data.error));
             }
         } catch (error) {
             dispatch(loginFailure(error.message));
         }
     };
 };
-  store.dispatch(loginUser({userName:"Neema" , password: '123'}));
-  store.dispatch(logout())
+//   store.dispatch(loginUser({userName:"Prisha" , password: '123'}));
+//   store.dispatch(logout())
   
 const demoState = {
     user: [{
