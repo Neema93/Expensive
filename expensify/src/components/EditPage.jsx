@@ -14,7 +14,7 @@ const EditPage = (props) => {
     amount,
     createdAt
   }
-  console.log("edit",newexpense)
+  // console.log("edit",newexpense)
   return (
     <div>
      <ExpenseForm 

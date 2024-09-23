@@ -40,7 +40,7 @@ export default class ExpenseForm extends React.Component{
                 createdAt: this.state.createdAt
 
             })
-            console.log("submitted!")
+            // console.log("submitted!")
         }
     }
     render(){

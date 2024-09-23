@@ -7,10 +7,10 @@ import EditPage from '../components/EditPage';
 import HelpPage from '../components/HelpPage';
 import NotFound from '../components/NotFound';
 import Header from '../components/Header';
-// import LoginPage from '../components/Login';
+import LoginPage from '../components/Login';
 import Logout from '../components/Logout';
   function AppRouter() {
-    // const { isAuthenticated } = useSelector((state) => state);
+    const { isAuthenticated } = useSelector((state) => state);
     return (
       <div className="App">
        
@@ -18,18 +18,20 @@ import Logout from '../components/Logout';
 
             <Header />
         <Routes>
-        {/* {isAuthenticated ? ( */}
+        {isAuthenticated ? (
    
-            <Route path="/dashbord" Component={ExpenseDashbordPage}/>
-          <Route path="/create" Component={CreatePage} /> 
-          <Route path="/edit/:id/:description/:amount/:createdAt"  Component={EditPage } /> 
-          <Route path="/help" Component={HelpPage} />
-          <Route  path="*" Component={NotFound} />
-          {/* <Logout /> */}
+            <>
+            <Route path="/dashbord" Component={ExpenseDashbordPage} />
+            <Route path="/create" Component={CreatePage} />
+            <Route path="/edit/:id/:description/:amount/:createdAt" Component={EditPage} />
+            <Route path="/help" Component={HelpPage} />
+            <Route path="*" Component={NotFound} />
+            <Logout />
+            </>
       
-      {/* ) : (
+      ) : (
         <Route path="/" Component={LoginPage} />
-      )} */}
+      )}
     
          
           
