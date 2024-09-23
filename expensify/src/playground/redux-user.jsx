@@ -1,5 +1,5 @@
 import { legacy_createStore as createStore, combineReducers ,applyMiddleware} from "redux";
-import {v1 as uuid} from 'uuid';
+
 import {thunk} from 'redux-thunk';
 import axios from 'axios';
 const API_URL = 'http://localhost:9000/users';
