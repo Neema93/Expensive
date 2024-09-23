@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 const LoginPage = (props) => {
     const [credentials, setCredentials] = useState({ username: '', password: '' });
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
     const {  error } = useSelector((state) => state);
 
     const handleChange = (e) => {
@@ -16,7 +16,7 @@ const LoginPage = (props) => {
         e.preventDefault();
         // props.dispatch(login(credentials))
        
-        // dispatch(login(credentials));
+        dispatch(login(credentials));
     };
 
     return (

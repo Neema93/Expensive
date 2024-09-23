@@ -15,11 +15,10 @@ import './style/style.scss'
 // import store from './playground/redux-101';
 // import person from './playground/destructuring';
 //import demoState from './playground/redux-expensify';
-import demoState from './playground/redux-user';
+// import demoState from './playground/redux-user';
 
 function App(){
 
-console.log(demoState)
 
   const store = configurestore();
   store.dispatch(addExpense({description:'water bill',amount: 4500,createdAt: '2000-02-08'}))
@@ -32,6 +31,8 @@ console.log(demoState)
  const visibleExpenses = getVisibleExpenses(state.expenses,state.filters)
 //  const visibleUser = getVisibleUser(state.user,state.auth)
  console.log(visibleExpenses);
+ console.log(state.auth);
+ console.log(state.user)
 //  console.log(visibleUser)
   return (
     <div className="App">

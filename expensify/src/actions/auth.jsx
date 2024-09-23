@@ -9,7 +9,7 @@ export const loginFailure = (error) => ({
   export const logout = () => ({
     type: 'LOGOUT',
   });
-  const loginUser = (credentials) => {
+  export const login = (credentials) => {
     return async (dispatch) => {
         try {
             const response = await axios.get(`http://localhost:9000/users/${credentials.userName}`);
