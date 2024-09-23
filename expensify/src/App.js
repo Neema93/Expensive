@@ -31,8 +31,8 @@ function App(){
  const visibleExpenses = getVisibleExpenses(state.expenses,state.filters)
 //  const visibleUser = getVisibleUser(state.user,state.auth)
  console.log(visibleExpenses);
- console.log(state.auth);
- console.log(state.user)
+//  console.log(visibleUser);
+ console.log(state.user);
 //  console.log(visibleUser)
   return (
     <div className="App">
