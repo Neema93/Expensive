@@ -10,8 +10,9 @@ import Header from '../components/Header';
 import LoginPage from '../components/Login';
 import Logout from '../components/Logout';
 import UserForm from '../components/UserForm';
+import ProtectedRoute from './ProtectedRoute';
   function AppRouter() {
-    const { isAuthenticated } = useSelector((state) => state);
+    // const { isAuthenticated } = useSelector((state) => state);
     return (
       <div className="App">
        
@@ -19,23 +20,26 @@ import UserForm from '../components/UserForm';
 
             <Header />
         <Routes>
+        <Route exact path='/' element={<PrivateRoute/>}>
+      <Route exact path='/' element={<Home/>}/>
+</Route>
         {/* {isAuthenticated ? ( */}
-   
-            {/* <> */}
-            <Route path="/dashbord" Component={ExpenseDashbordPage} />
-            <Route path="/create" Component={CreatePage} />
-            <Route path="/edit/:id/:description/:amount/:createdAt" Component={EditPage} />
-            <Route path="/help" Component={HelpPage} />
-            <Route path="/newUser" Component={UserForm} />
-            <Route path="*" Component={NotFound} />
-            <Route path="/Logout" Component={Logout} />
-            {/* </> */}
-      
-      {/* ) : ( */}
+        <Route>
+       
+          <ProtectedRoute path="/dashbord" Component={ExpenseDashbordPage} />
+          <ProtectedRoute path="/create" Component={CreatePage} />
+            <ProtectedRoute path="/edit/:id/:description/:amount/:createdAt" Component={EditPage} />
+            <ProtectedRoute path="/help" Component={HelpPage} />
+            </Route>
+            <Route path="/login" Component={LoginPage} />
+          <Route path="/newUser" Component={UserForm} />
+          <Route path="*" Component={NotFound} />
+          
+            
         <Route path="/" Component={LoginPage} />
-      {/* )} */}
+   
     
-         
+      
           
           </Routes>
         </BrowserRouter>

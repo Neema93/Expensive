@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../actions/auth';
-
+import { useNavigate } from 'react-router-dom';
 const LoginPage = (props) => {
     const [credentials, setCredentials] = useState({ username: '', password: '' });
     const dispatch = useDispatch();
     const {  error } = useSelector((state) => state);
-
+    const navigate = useNavigate();
     const handleChange = (e) => {
 
         const { name, value } = e.target;
@@ -18,6 +18,9 @@ const LoginPage = (props) => {
         //  props.dispatch(login(credentials))
        console.log(credentials)
         dispatch(login(credentials));
+        if (!error) {
+            navigate.push('/dashbord'); // Redirect on successful login
+          }
     };
 
     return (
