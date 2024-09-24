@@ -19,21 +19,21 @@ import UserForm from '../components/UserForm';
 
             <Header />
         <Routes>
-        {isAuthenticated ? (
+        {/* {isAuthenticated ? ( */}
    
-            <>
+            {/* <> */}
             <Route path="/dashbord" Component={ExpenseDashbordPage} />
             <Route path="/create" Component={CreatePage} />
             <Route path="/edit/:id/:description/:amount/:createdAt" Component={EditPage} />
             <Route path="/help" Component={HelpPage} />
-            <Route path="/newUser" Component={UserForm}/>
+            <Route path="/newUser" Component={UserForm} />
             <Route path="*" Component={NotFound} />
-            <Logout />
-            </>
+            <Route path="/Logout" Component={Logout} />
+            {/* </> */}
       
-      ) : (
+      {/* ) : ( */}
         <Route path="/" Component={LoginPage} />
-      )}
+      {/* )} */}
     
          
           
