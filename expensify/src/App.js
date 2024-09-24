@@ -33,11 +33,13 @@ function App(){
  console.log(visibleExpenses);
 //  console.log(visibleUser);
  console.log(state.user);
+ console.log(state.auth)
+ 
 //  console.log(visibleUser)
   return (
     <div className="App">
       <Provider store={store}>
-      <AppRouter />
+         <AppRouter />
       </Provider>
     
  </div>
