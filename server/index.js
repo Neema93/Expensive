@@ -11,10 +11,10 @@ app.use(express.json());
 //add user
 app.post("/users",async(req,res) => {
   try {
-    // eslint-disable-next-line camelcase
-    const {user_username , user_password} = req.body;
-    // eslint-disable-next-line camelcase
-    const newUser = await pool.query("INSERT INTO users ( user_username , user_password ) VALUES ($1,$2)",[ user_username, user_password ]);
+
+    const {username , password} = req.body;
+ 
+    const newUser = await pool.query("INSERT INTO users ( user_username , user_password ) VALUES ($1,$2)",[ username, password ]);
     res.json(newUser);
   } catch (err) {
     console.log(err.message);
@@ -23,9 +23,7 @@ app.post("/users",async(req,res) => {
 //get all user
 app.get("/users",async(req,res) =>{
   try {
-    // eslint-disable-next-line camelcase
-  
-    // eslint-disable-next-line camelcase
+
     const getUser = await pool.query("SELECT * FROM users  ");
     res.json(getUser.rows);
   } catch (err) {

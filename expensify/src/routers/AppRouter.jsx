@@ -9,6 +9,7 @@ import NotFound from '../components/NotFound';
 import Header from '../components/Header';
 import LoginPage from '../components/Login';
 import Logout from '../components/Logout';
+import UserForm from '../components/UserForm';
   function AppRouter() {
     const { isAuthenticated } = useSelector((state) => state);
     return (
@@ -25,6 +26,7 @@ import Logout from '../components/Logout';
             <Route path="/create" Component={CreatePage} />
             <Route path="/edit/:id/:description/:amount/:createdAt" Component={EditPage} />
             <Route path="/help" Component={HelpPage} />
+            <Route path="/newUser" Component={UserForm}/>
             <Route path="*" Component={NotFound} />
             <Logout />
             </>

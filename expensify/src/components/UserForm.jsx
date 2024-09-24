@@ -15,10 +15,12 @@ const UserForm = () => {
 
       dispatch(addUser(user));
 
-    setName('');
+    setUsername('');
+    setPassword('');
  
   };
 
+ 
   return (
     <form onSubmit={handleSubmit}>
       <input
@@ -32,7 +34,7 @@ const UserForm = () => {
         type="password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
-        placeholder="Enter user name"
+        placeholder="Enter user Password"
         required
       />
       <button type="submit">{'Add'} User</button>
