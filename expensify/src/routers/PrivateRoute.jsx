@@ -1,10 +1,18 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Navigate, Outlet } from "react-router-dom";
+import Header from "../components/Header";
 const PrivateRoute = (props) => {
-  const Auth = props.isAuthenticated;
-    console.log("Route")
-  return Auth ? <Outlet /> : <Navigate to="/" />;
+ 
+
+  return props.isAuthenticated ? (
+    <>
+      <Header /> {/* Render the header here */}
+      <Outlet />  {/* Render the child routes */}
+    </>
+  ) : (
+    <Navigate to="/" />
+  );;
 };
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
