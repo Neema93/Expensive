@@ -3,18 +3,18 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addUser} from '../actions/user';
-
+import { useNavigate } from "react-router-dom";
 const UserForm = () => {
   const [username, setUsername] = useState('');
   const [password,setPassword] = useState('');
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     const user = { username,password };
 
       dispatch(addUser(user));
-
+      navigate('/');
     setUsername('');
     setPassword('');
  

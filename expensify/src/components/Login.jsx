@@ -1,25 +1,32 @@
-import React, { useState } from "react";
-import { useDispatch,  connect } from "react-redux";
+import React, { useState,useEffect } from "react";
+import { useDispatch,  connect, useSelector } from "react-redux";
 import { login } from "../actions/auth";
 import { useNavigate } from "react-router-dom";
 import UserForm from "./UserForm";
-const LoginPage = () => {
+const Login = () => {
   const [credentials, setCredentials] = useState({
     username: "",
     password: "",
   });
+  const isLoggedIn = useSelector((state) => state.auth.isAuthenticated);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const doStuff = event => navigate('/dashboard', { replace: true });
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setCredentials({ ...credentials, [name]: value });
   };
-  const handleSubmit = (e) => {
+   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(login(credentials));
-       doStuff();
+   dispatch(login(credentials));
+      
   };
+  useEffect(() => {
+    if (isLoggedIn) {
+        navigate('/dashboard')
+    }
+}, [isLoggedIn]);
+
   const handelUser = () => {
     navigate("/user");
   }
@@ -55,4 +62,4 @@ const LoginPage = () => {
     </div>
   );
 };
-export default connect() (LoginPage);
+export default connect() (Login);
