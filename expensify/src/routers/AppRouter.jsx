@@ -1,46 +1,39 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import ExpenseDashbordPage from '../components/ExpenseDashbordPage';
 import CreatePage from '../components/CreatePage';
 import EditPage from '../components/EditPage';
 import HelpPage from '../components/HelpPage';
 import NotFound from '../components/NotFound';
 import Header from '../components/Header';
-import ProtectedRoute from './ProtectedRoute';
-
- import LoginPage from '../components/Login';
+import PrivateRoute from './PrivateRoute';
+import PublicRoute from './PublicRoute';
+ import Login from '../components/Login';
 import Logout from '../components/Logout';
-  function AppRouter(props) {
-    
-    
+import { unstable_HistoryRouter as HistoryRouter } from "react-router-dom";
+import history from './history';
 
-    return (
-      <div className="App">
-       
-        <BrowserRouter>
+const AppRouter = () => (
 
-            <Header />
-        <Routes>
-      
-   <>
-            <ProtectedRoute path="/dashbord" Component={ExpenseDashbordPage}/>
-          <ProtectedRoute path="/create" Component={CreatePage} /> 
-          <ProtectedRoute path="/edit/:id/:description/:amount/:createdAt"  Component={EditPage } /> 
-          </>
-          <ProtectedRoute path="/help" Component={HelpPage} />
-          <Route  path="*" Component={NotFound} />
-          <Logout />
-      
-   
-        <Route path="/" Component={LoginPage} />
+  // <BrowserRouter>
+
+  //       <PublicRoute path="/" component={LoginPage} exact={true} />
+  //       <PrivateRoute path="/dashboard" component={ExpenseDashbordPage} />
+  //       <PrivateRoute path="/create" component={CreatePage} />
+  //       <PrivateRoute path="/edit/:id/:description/:amount/:createdAt"  Component={EditPage }  />
      
-    
-         
-          
-          </Routes>
-        </BrowserRouter>
-      </div>
-    );
-  }
+  //     </BrowserRouter>
+   <Router>
+   <Routes>
+     <Route element={<PrivateRoute/>}>
+   
+         <Route  path="/dashboard" element={<Header /> && <ExpenseDashbordPage />}  />
+         <Route path="/create" element={<Header /> &&<CreatePage />} />
+         <Route  path="/edit/:id/:description/:amount/:createdAt"  element={<Header /> &&< EditPage /> } />
+     </Route>
+     <Route path='/' element={<Login/>}/>
+   </Routes>
+</Router>
+);
+  
   export default AppRouter;
