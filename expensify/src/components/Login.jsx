@@ -17,9 +17,9 @@ const LoginPage = (props) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(login(credentials));
+    dispatch(login(credentials)) &&   navigate("/dashboard");
 
-        navigate("/dashboard");
+      
   
   };
 
