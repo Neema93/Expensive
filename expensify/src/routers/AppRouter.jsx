@@ -17,11 +17,13 @@ const AppRouter = () => (
      <Route element={<PrivateRoute/>}>
    
          <Route  path="/dashboard" element={<ExpenseDashbordPage />}  />
-         <Route path="/create" element={<Header /> &&<CreatePage />} />
-         <Route  path="/edit/:id/:description/:amount/:createdAt"  element={<Header /> &&< EditPage /> } />
+         <Route path="/create" element={<CreatePage />} />
+         <Route path="/help" element={<HelpPage />} /> 
+         <Route  path="/edit/:id/:description/:amount/:createdAt"  element={< EditPage /> } />
      </Route>
      <Route path='/' element={<Login/>}/>
      <Route path='/user' element={<UserForm />} />
+
    </Routes>
 </Router>
 );
