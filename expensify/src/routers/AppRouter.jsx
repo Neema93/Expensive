@@ -10,6 +10,7 @@ import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
  import Login from '../components/Login';
 import Logout from '../components/Logout';
+import UserForm from '../components/UserForm';
 
 
 const AppRouter = () => (
@@ -22,6 +23,7 @@ const AppRouter = () => (
          <Route  path="/edit/:id/:description/:amount/:createdAt"  element={<Header /> &&< EditPage /> } />
      </Route>
      <Route path='/' element={<Login/>}/>
+     <Route path='/user' element={<UserForm />} />
    </Routes>
 </Router>
 );

@@ -11,17 +11,11 @@ export const loginFailure = (error) => ({
     type: 'LOGOUT',
   });
   export const login = (credentials) => {
-
     return async (dispatch) => {
-       
+        console.log("check")
         try {
             const response = await axios.get(`http://localhost:9000/users/${credentials.username}`);
-           
-            // if (response.status !== 200) {
-              
-            //     throw new Error(`HTTP error! Status: ${response.status}`);
-            // }
-            if (response.status === 200 && response.data.user_username === credentials.username && response.data.user_password === credentials.password ) {
+            if (response.status === 200 ) {
                
                     dispatch(loginSuccess(response.data));
                
