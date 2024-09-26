@@ -10,24 +10,14 @@ import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
  import Login from '../components/Login';
 import Logout from '../components/Logout';
-import { unstable_HistoryRouter as HistoryRouter } from "react-router-dom";
-import history from './history';
+
 
 const AppRouter = () => (
-
-  // <BrowserRouter>
-
-  //       <PublicRoute path="/" component={LoginPage} exact={true} />
-  //       <PrivateRoute path="/dashboard" component={ExpenseDashbordPage} />
-  //       <PrivateRoute path="/create" component={CreatePage} />
-  //       <PrivateRoute path="/edit/:id/:description/:amount/:createdAt"  Component={EditPage }  />
-     
-  //     </BrowserRouter>
    <Router>
    <Routes>
      <Route element={<PrivateRoute/>}>
    
-         <Route  path="/dashboard" element={<Header /> && <ExpenseDashbordPage />}  />
+         <Route  path="/dashboard" element={<ExpenseDashbordPage />}  />
          <Route path="/create" element={<Header /> &&<CreatePage />} />
          <Route  path="/edit/:id/:description/:amount/:createdAt"  element={<Header /> &&< EditPage /> } />
      </Route>

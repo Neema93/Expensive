@@ -10,7 +10,7 @@ const LoginPage = (props) => {
   });
   const dispatch = useDispatch();
   const navigate = useNavigate();
-//   const {  error } = useSelector((state) => state);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setCredentials({ ...credentials, [name]: value });
@@ -18,7 +18,7 @@ const LoginPage = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(login(credentials));
-    // if (!error) {
+
         navigate("/dashboard");
   
   };
