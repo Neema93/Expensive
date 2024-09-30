@@ -21,9 +21,9 @@ function App(){
 
 
   const store = configurestore();
-  store.dispatch(addExpense({description:'water bill',amount: 4500,createdAt: '2000-02-08'}))
-  store.dispatch(addExpense({description:'gas bill',createdAt: '2000-02-08'}))
-  store.dispatch(addExpense({description:'rent bill',amount: 102500,createdAt: '2000-02-08'}))
+  // store.dispatch(addExpense({description:'water bill',amount: 4500,createdAt: '2000-02-08'}))
+  // store.dispatch(addExpense({description:'gas bill',createdAt: '2000-02-08'}))
+  // store.dispatch(addExpense({description:'rent bill',amount: 102500,createdAt: '2000-02-08'}))
   // store.dispatch(addUser({username:'Neema', password:'123'}))
   store.dispatch(setTextFilter())
 

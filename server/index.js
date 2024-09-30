@@ -58,9 +58,9 @@ app.get("/expenses/:userId",async(req,res) =>{
 app. post("/expenses",async(req,res) => {
   try {
     // eslint-disable-next-line camelcase
-    const {description, amount, user_id} = req.body;
+    const {description, amount} = req.body;
     // eslint-disable-next-line camelcase
-    const newExpenses = await pool.query("INSERT INTO expenses (description, amount,user_id) VALUES ($1,$2,$3)",[ description, amount, user_id]);
+    const newExpenses = await pool.query("INSERT INTO expenses (description, amount,user_id) VALUES ($1,$2,$3)",[ description, amount, 9]);
     res.json(newExpenses);
   } catch (err) {
     console.log(err.message);
