@@ -4,8 +4,6 @@ import ExpenseDashbordPage from '../components/ExpenseDashbordPage';
 import CreatePage from '../components/CreatePage';
 import EditPage from '../components/EditPage';
 import HelpPage from '../components/HelpPage';
-import NotFound from '../components/NotFound';
-import Header from '../components/Header';
 import PrivateRoute from './PrivateRoute';
  import Login from '../components/Login';
 import UserForm from '../components/UserForm';
