@@ -3,9 +3,9 @@ const expensesReduserDefaultState =[];
 export default(state =expensesReduserDefaultState , action) => {
     switch(action.type){ 
         case 'GET_EXPENSES':
-            return  [...state,action.expense];
+            return  [...state,action.payload];
         case 'ADD_EXPENSE':
-               return  [...state,action.expense];
+               return  [...state,action.payload];
         case 'REMOVE_EXPENSE':
             return state.filter(({id}) => id !== action.id  )
         case 'EDIT_EXPENSE':

@@ -3,11 +3,16 @@ import axios from 'axios';
 
 const API_URL = 'http://localhost:9000/expenses/';
 
-export const getExpenses =()  => async(dispatch)=>{
-    const user_id = 13
-    const response = await axios.get(`${API_URL}${user_id}`);
-  
-    dispatch({ type: 'GET_EXPENSES', payload: response.data });
+export const getExpenses =()  => async(dispatch,getState)=>{
+    const user_id = getState().auth.user.user_id;
+    console.log(user_id)
+    try {
+        const response = await axios.get(`${API_URL}${user_id}`);
+        dispatch({ type: 'GET_EXPENSES', payload: response.data });
+    } catch (error) {
+        console.error("Error fetching expenses:", error);
+      
+    }
 }
 export const addExpense = ({description = '', amount = 0, user_id = ''} = {}) => async(dispatch) =>  {
     

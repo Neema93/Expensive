@@ -25,10 +25,10 @@ function App(){
   // store.dispatch(addExpense({description:'gas bill',createdAt: '2000-02-08'}))
   // store.dispatch(addExpense({description:'rent bill',amount: 102500,createdAt: '2000-02-08'}))
   // store.dispatch(addUser({username:'Neema', password:'123'}))
-  store.dispatch(setTextFilter())
-  store.dispatch(getExpenses());
+  // store.dispatch(setTextFilter())
+  // store.dispatch(getExpenses());
  const state = store.getState();
- 
+
  const visibleExpenses = getVisibleExpenses(state.expenses,state.filters)
  console.log(state.expenses);
   return (
