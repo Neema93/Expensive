@@ -9,7 +9,7 @@ const Header = (props) => (
        <NavLink to='/create' className={({ isActive}) => isActive ? "active" : "" }>Create</NavLink>&nbsp;&nbsp;
 
        <NavLink to='/help'className={({ isActive}) => isActive ? "active" : "" }>Help</NavLink>
-       <span>{props.user. user_username}</span>
+       <span>{props.user.user_username}</span>
      <Logout />
     </header>
   )
