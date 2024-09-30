@@ -1,5 +1,6 @@
 // eslint-disable-next-line import/no-anonymous-default-export
-export default (expenses, {text, sortBy, startDate, endDate}) =>{
+export default (expenses, {text, sortBy}) =>{
+    console.log(expenses)
     return expenses.filter((expense) => {
         const textMatch = expense.description.toLowerCase().includes(text.toLowerCase());
         return  textMatch; 

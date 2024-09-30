@@ -3,7 +3,7 @@ import {Provider} from 'react-redux';
 import './App.css';
 import AppRouter from './routers/AppRouter';
 import configurestore from './store/configurestore';
-import {addExpense} from './actions/expenses';
+import {addExpense, getExpenses} from './actions/expenses';
 import {setTextFilter} from './actions/filters';
 import getVisibleExpenses from './selectors/expenses';
 // import getVisibleUser from './selectors/login'
@@ -26,16 +26,11 @@ function App(){
   // store.dispatch(addExpense({description:'rent bill',amount: 102500,createdAt: '2000-02-08'}))
   // store.dispatch(addUser({username:'Neema', password:'123'}))
   store.dispatch(setTextFilter())
-
+  store.dispatch(getExpenses());
  const state = store.getState();
- const visibleExpenses = getVisibleExpenses(state.expenses,state.filters)
-//  const visibleUser = getVisibleUser(state.user,state.auth)
- console.log(visibleExpenses);
-//  console.log(visibleUser);
- console.log(state.user);
- console.log(state.auth)
  
-//  console.log(visibleUser)
+ const visibleExpenses = getVisibleExpenses(state.expenses,state.filters)
+ console.log(state.expenses);
   return (
     <div className="App">
       <Provider store={store}>

@@ -1,8 +1,14 @@
-import {v1 as uuid} from 'uuid';
+
 import axios from 'axios';
 
 const API_URL = 'http://localhost:9000/expenses/';
 
+export const getExpenses =()  => async(dispatch)=>{
+    const user_id = 13
+    const response = await axios.get(`${API_URL}${user_id}`);
+  
+    dispatch({ type: 'GET_EXPENSES', payload: response.data });
+}
 export const addExpense = ({description = '', amount = 0, user_id = ''} = {}) => async(dispatch) =>  {
     
     console.log(user_id,"user_id");
@@ -12,7 +18,7 @@ export const addExpense = ({description = '', amount = 0, user_id = ''} = {}) =>
 }
 
 export const removeExpense =({id} = {}) => ({
-    
+
     type: 'REMOVE_EXPENSE',
     id
 })
