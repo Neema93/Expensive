@@ -3,34 +3,12 @@ import {Provider} from 'react-redux';
 import './App.css';
 import AppRouter from './routers/AppRouter';
 import configurestore from './store/configurestore';
-import {addExpense, getExpenses} from './actions/expenses';
-import {setTextFilter} from './actions/filters';
 import getVisibleExpenses from './selectors/expenses';
-// import getVisibleUser from './selectors/login'
-
-
-
 import './style/style.scss'
-// import { addUser } from './actions/user';
-// import store from './playground/redux-101';
-// import person from './playground/destructuring';
-//import demoState from './playground/redux-expensify';
-// import demoState from './playground/redux-user';
-
 function App(){
-
-
   const store = configurestore();
-  // store.dispatch(addExpense({description:'water bill',amount: 4500,createdAt: '2000-02-08'}))
-  // store.dispatch(addExpense({description:'gas bill',createdAt: '2000-02-08'}))
-  // store.dispatch(addExpense({description:'rent bill',amount: 102500,createdAt: '2000-02-08'}))
-  // store.dispatch(addUser({username:'Neema', password:'123'}))
-  // store.dispatch(setTextFilter())
-  // store.dispatch(getExpenses());
  const state = store.getState();
-
- const visibleExpenses = getVisibleExpenses(state.expenses,state.filters)
- console.log(state.expenses);
+getVisibleExpenses(state.expenses,state.filters)
   return (
     <div className="App">
       <Provider store={store}>

@@ -10,7 +10,7 @@ CREATE TABLE expenses (
         id SERIAL PRIMARY KEY,
         description VARCHAR(255) NOT NULL,
         amount VARCHAR(255) NOT NULL,
-        createdAt  TIMESTAMP NOT NULL DEFAULT NOW(),
+        createdAt  TIMESTAMP NOT NULL,
         user_id int, 
         FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
