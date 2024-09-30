@@ -1,6 +1,7 @@
 import {  NavLink} from 'react-router-dom';
 import Logout from './Logout';
-const Header = () => (
+import { connect } from "react-redux";
+const Header = (props) => (
     <header>
        <h1>Expensify</h1>
 
@@ -8,7 +9,11 @@ const Header = () => (
        <NavLink to='/create' className={({ isActive}) => isActive ? "active" : "" }>Create</NavLink>&nbsp;&nbsp;
 
        <NavLink to='/help'className={({ isActive}) => isActive ? "active" : "" }>Help</NavLink>
+       <span>{props.user. user_username}</span>
      <Logout />
     </header>
   )
-  export default Header;
+  const mapStateToProps = (state) => ({
+    user: state.auth.user,
+  });
+  export default connect(mapStateToProps)(Header);
