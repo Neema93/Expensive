@@ -1,0 +1,37 @@
+
+.header {
+    background-color: white;
+    padding: 25px 10px;
+    overflow: hidden;
+    text-align: center;
+    font-size: 18px; 
+    line-height: 25px;
+    border-radius: 4px;
+
+  }
+  .header .logo {
+    float: left;
+    font-size: 25px;
+    font-weight: bold;
+  }
+  .header-right {
+    float: right;
+ 
+  }
+  
+  .header-navlink {
+    background-color: rgb(58, 57, 57);
+    padding: 15px 10px;
+    margin-bottom: 1rem;
+    }
+  .link{
+    text-decoration: none;
+    color: white;
+  }
+  .active{
+    font-weight: bold;
+    color: antiquewhite;
+  }
+  
+ 
+  
