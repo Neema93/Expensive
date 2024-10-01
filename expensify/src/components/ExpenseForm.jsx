@@ -9,7 +9,7 @@ import { connect } from "react-redux";
         this.state ={
             description: props.expense ?  props.expense.description:'',
             amount: props.expense ?  (props.expense.amount/100 ).toString(): '',
-            createdAt: props.expense ?  (props.expense.createdAt):'',
+           
             error:''
         }
    
@@ -26,23 +26,16 @@ import { connect } from "react-redux";
             this.setState(() => ({amount}));
         }
     }
-    onDateChange = (e) => {
-        const createdAt = e.target.value;
-        this.setState(() => ({createdAt}))
-
-    }
-    
     onSubmit= (e) => {
         e.preventDefault();
 
-        if(!this.state.description || !this.state.amount || !this.state.createdAt){
+        if(!this.state.description || !this.state.amount){
             this.setState(() =>({error:'please provide descrpition and amount and date'}))
         } else {
             this.setState(()=>({error:''}))
             this.props.onSubmit({
                 description:this.state.description,
                 amount:parseFloat(this.state.amount, 10)* 100,
-                createdAt: this.state.createdAt,
                 user_id: this.props.user_id   
 
             })
@@ -56,8 +49,6 @@ import { connect } from "react-redux";
               <form onSubmit={this.onSubmit}>
                 <input type='text' placeholder="Description" autoFocus value={this.state.description} onChange={this.onDescriptionChange}/><br/><br/>
                 <input type='number' placeholder="Amount" value={this.state.amount} onChange={this.onAmountChange}/><br/><br/>
-                <input type="date" value={this.state.createdAt} onChange={this.onDateChange}></input><br/><br/>
-                
                 <button>Add Expense</button>
                
                 </form>

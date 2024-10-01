@@ -1,12 +1,21 @@
 import ConnectedExpenseList from "./ExpenseList";
 import ExpenseListFilters from './ExpenseListFilters';
-
-
-const ExpenseDashbordPage = () => (
+import { useEffect } from "react";
+import { getExpenses } from "../actions/expenses";
+import { connect } from "react-redux";
+const ExpenseDashbordPage = () =>{
+  useEffect(() => {
+    getExpenses();
+  }, []);
+return(
     <div>
       
       <ExpenseListFilters />
-      <ConnectedExpenseList />
+      <ConnectedExpenseList  />
     </div>
-  );
-  export default ExpenseDashbordPage;
+  )};
+  const mapDispatchToProps = (dispatch) => ({
+    getExpenses: () => dispatch(getExpenses()) // Create a prop for fetching expenses
+});
+
+  export default connect(undefined ,mapDispatchToProps)(ExpenseDashbordPage);

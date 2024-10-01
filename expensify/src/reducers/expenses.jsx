@@ -3,7 +3,7 @@ const expensesReduserDefaultState =[];
 export default(state =expensesReduserDefaultState , action) => {
     switch(action.type){ 
         case 'GET_EXPENSES':
-            return  [...state,action.payload];
+            return [...state,action.payload];
         case 'ADD_EXPENSE':
                return  [...state,action.payload];
         case 'REMOVE_EXPENSE':

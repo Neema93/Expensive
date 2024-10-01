@@ -1,5 +1,6 @@
 export default (expenses = [], { text = '', sortBy = 'date' } = {}) => {
-    return expenses
+    const expensesArray = Object.values(expenses);
+    return expensesArray
         .filter((expense) => {
             const textMatch = expense.description && expense.description.toLowerCase().includes(text.toLowerCase());
             return textMatch;

@@ -1,12 +1,13 @@
 import React from "react";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import ExpenseForm from "./ExpenseForm";
-import { addExpense } from "../actions/expenses";
+import { addExpense, getExpenses } from "../actions/expenses";
 import { useNavigate } from 'react-router-dom';
 
 const CreatePage = (props) => {
   const navigate = useNavigate();
-  const doStuff = event => navigate('/dashboard', { replace: true });
+  const dispatch = useDispatch();
+  const doStuff = event => navigate('/dashboard');
   return (
     <div>
   
@@ -14,6 +15,7 @@ const CreatePage = (props) => {
       <ExpenseForm
         onSubmit={(expense) => {
           props.dispatch(addExpense(expense));
+          dispatch(getExpenses());
           doStuff();
           console.log(expense);
         }}
