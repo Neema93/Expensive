@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import {setTextFilter, sortByAmount,sortByDate} from '../actions/filters';
 
 const ExpenseListFilters = (props) => (
-    <div className="header-right">
+    <div>
         <input type="text" value={props.filters.text} onChange={(e) => {
             props.dispatch(setTextFilter(e.target.value))
             
