@@ -47,8 +47,8 @@ import { connect } from "react-redux";
             <div>
               {this.state.error &&  <p>{this.state.error}</p>}
               <form onSubmit={this.onSubmit}>
-                <input type='text' placeholder="Description" autoFocus value={this.state.description} onChange={this.onDescriptionChange}/><br/><br/>
-                <input type='number' placeholder="Amount" value={this.state.amount} onChange={this.onAmountChange}/><br/><br/>
+                <input className='input' type='text' placeholder="Description" autoFocus value={this.state.description} onChange={this.onDescriptionChange}/><br/><br/>
+                <input className='input' type='number' placeholder="Amount" value={this.state.amount} onChange={this.onAmountChange}/><br/><br/>
                 <button>Add Expense</button>
                
                 </form>
