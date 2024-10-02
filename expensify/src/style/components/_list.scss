@@ -8,8 +8,13 @@
     justify-content: space-between; /* Space between name and amount */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
     transition: transform 0.2s; 
-    
+    width:auto;
 }
 .list:hover {
     transform: scale(1.02); /* Slightly increase size on hover */
+}
+.expense-name {
+    font-weight: bold; /* Bold for the name */
+    color: #333; /* Dark text color */
+    text-decoration: none;
 }

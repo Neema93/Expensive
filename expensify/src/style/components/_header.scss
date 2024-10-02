@@ -28,6 +28,10 @@
     text-decoration: none;
     color:$dark-grey;
   }
+  .link:hover{
+    text-decoration: underline;
+    color:$dark-grey;
+  }
   .active{
     font-weight: bold;
     color: $dark-grey;
