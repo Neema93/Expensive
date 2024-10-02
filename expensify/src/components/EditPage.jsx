@@ -19,6 +19,7 @@ const EditPage = (props) => {
   }, [getExpenses]);
   console.log("edit", newexpense);
   return (
+    <>
     <div className="container">
       <h1>Edit Expenses</h1>
       <ExpenseForm
@@ -29,7 +30,8 @@ const EditPage = (props) => {
           doStuff();
         }}
       />
-      <button
+      
+      <button className='form_button'
         onClick={() => {
           props.dispatch(removeExpense({ id: newexpense.id }));
           doStuff();
@@ -37,7 +39,8 @@ const EditPage = (props) => {
       >
         Remove
       </button>
-    </div>
+      </div>
+    </>
   );
 };
 const mapStateToProps = (state, id) => ({

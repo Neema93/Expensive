@@ -23,7 +23,7 @@ import { connect } from "react-redux";
         e.preventDefault();
 
         if(!this.state.description || !this.state.amount){
-            this.setState(() =>({error:'please provide descrpition and amount and date'}))
+            this.setState(() =>({error:'please provide descrpition and amount'}))
         } else {
             this.setState(()=>({error:''}))
             this.props.onSubmit({
@@ -36,11 +36,11 @@ import { connect } from "react-redux";
     }
     render(){
         return(
-            <div>
+            <div >
               {this.state.error &&  <p>{this.state.error}</p>}
-              <form onSubmit={this.onSubmit}>
-                <input className='input' type='text' placeholder="Description" autoFocus value={this.state.description} onChange={this.onDescriptionChange}/><br/><br/>
-                <input className='input' type='number' placeholder="Amount" value={this.state.amount} onChange={this.onAmountChange}/><br/><br/>
+              <form className="form" onSubmit={this.onSubmit}>
+                <input className='input' type='text' placeholder="Description" autoFocus value={this.state.description} onChange={this.onDescriptionChange}/>
+                <input className='input' type='number' placeholder="Amount" value={this.state.amount} onChange={this.onAmountChange}/>
                 <button className='form_button'>Add Expense</button>
                 </form>
             </div> 

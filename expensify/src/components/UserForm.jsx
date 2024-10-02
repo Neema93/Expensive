@@ -20,7 +20,7 @@ const UserForm = () => {
   return (
     <div className="container">
       <h1> Create New user </h1>
-      <form onSubmit={handleSubmit}>
+      <form className="form" onSubmit={handleSubmit}>
         <input
           className="input"
           type="text"
@@ -28,7 +28,7 @@ const UserForm = () => {
           onChange={(e) => setUsername(e.target.value)}
           placeholder="Enter user name"
           required
-        /><br /><br/>
+        />
         <input
           className="input"
           type="password"
@@ -36,7 +36,7 @@ const UserForm = () => {
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Enter user Password"
           required
-        /><br /><br/>
+        />
         <button className='form_button'type="submit">{"Add"} User</button>
       </form>
     </div>

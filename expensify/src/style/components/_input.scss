@@ -5,3 +5,12 @@
     border: 1px solid #ccc;
     border-radius: 3px;
 }
+
+.input:hover {
+    border-color: #3498db; /* Change border color on hover */
+}
+
+.input:focus {
+    outline: none; /* Remove outline */
+    border-color: #2980b9; /* Change border color on focus */
+}
