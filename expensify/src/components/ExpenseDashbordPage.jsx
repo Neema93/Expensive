@@ -9,7 +9,7 @@ const ExpenseDashbordPage = () =>{
   }, []);
 return(
     <div className="container">
-        <h1>Expense List</h1>
+      <h1>Expense List</h1>
       <ExpenseListFilters />
       <ConnectedExpenseList />
     </div>

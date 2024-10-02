@@ -5,15 +5,14 @@ import CreatePage from '../components/CreatePage';
 import EditPage from '../components/EditPage';
 import HelpPage from '../components/HelpPage';
 import PrivateRoute from './PrivateRoute';
- import Login from '../components/Login';
+import Login from '../components/Login';
 import UserForm from '../components/UserForm';
-
+import NotFound from '../components/NotFound';
 
 const AppRouter = () => (
    <Router>
    <Routes>
      <Route element={<PrivateRoute/>}>
-   
          <Route  path="/dashboard" element={<ExpenseDashbordPage />}  />
          <Route path="/create" element={<CreatePage />} />
          <Route path="/help" element={<HelpPage />} /> 
@@ -21,7 +20,7 @@ const AppRouter = () => (
      </Route>
      <Route path='/' element={<Login/>}/>
      <Route path='/user' element={<UserForm />} />
-
+    <Route path='*' element={<NotFound />} />
    </Routes>
 </Router>
 );

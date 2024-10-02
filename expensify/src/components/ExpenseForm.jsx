@@ -1,21 +1,14 @@
 import React from "react";
- 
 import { connect } from "react-redux";
  class ExpenseForm extends React.Component{
-
     constructor(props){
         super(props);
-    
         this.state ={
             description: props.expense ?  props.expense.description:'',
             amount: props.expense ?  (props.expense.amount/100 ).toString(): '',
-           
             error:''
         }
-   
     }
-
-    
     onDescriptionChange = (e) => {
         const description = e.target.value;
         this.setState(() => ({ description }));
@@ -42,7 +35,6 @@ import { connect } from "react-redux";
         }
     }
     render(){
-   
         return(
             <div>
               {this.state.error &&  <p>{this.state.error}</p>}
@@ -50,15 +42,12 @@ import { connect } from "react-redux";
                 <input className='input' type='text' placeholder="Description" autoFocus value={this.state.description} onChange={this.onDescriptionChange}/><br/><br/>
                 <input className='input' type='number' placeholder="Amount" value={this.state.amount} onChange={this.onAmountChange}/><br/><br/>
                 <button>Add Expense</button>
-               
                 </form>
             </div> 
         )
     }
 }
 const mapStateToProps = (state) => ({
-    user_id: state.auth.user.user_id // Adjust this path according to your state structure
+    user_id: state.auth.user.user_id
 });
-
-// Connect the component to the Redux store
 export default connect(mapStateToProps)(ExpenseForm);
