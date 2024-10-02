@@ -9,7 +9,7 @@ const CreatePage = (props) => {
   const dispatch = useDispatch();
   const doStuff = event => navigate('/dashboard');
   return (
-    <div>
+    <div  className="container">
   
       <h1>Create Expense</h1>
       <ExpenseForm

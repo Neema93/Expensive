@@ -20,17 +20,17 @@
   }
   
   .header-navlink {
-    background-color:	#6495ED;
+    background-color:	#B0C4DE;
     padding: 15px 10px;
     margin-bottom: 1rem;
     }
   .link{
     text-decoration: none;
-    color: white;
+    color:$dark-grey;
   }
   .active{
     font-weight: bold;
-    color: antiquewhite;
+    color: $dark-grey;
   }
   
  
