@@ -1,0 +1,32 @@
+.custom-select {
+
+    // background-color: #fff; /* Background color */
+    border: 1px solid #ccc; /* Border styling */
+    border-radius: 3px; /* Rounded corners */
+    // padding: 10px; /* Padding inside the select */
+    width: 10rem; /* Set width */
+    // font-size: 16px; /* Font size */
+    // color: #333; /* Text color */
+    cursor: pointer; /* Cursor on hover */
+    height: 2rem;
+    transition: border-color 0.3s; /* Smooth border color change */
+}
+
+.custom-select:hover {
+    border-color: #3498db; /* Change border color on hover */
+}
+
+.custom-select:focus {
+    outline: none; /* Remove outline */
+    border-color: #2980b9; /* Change border color on focus */
+}
+
+/* Optional: Add a custom arrow */
+.custom-select::after {
+    content: '▼'; /* Arrow character */
+    position: absolute; /* Positioning */
+    right: 10px; /* Distance from right */
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Adjust position */
+    pointer-events: none; /* Prevent hover events */
+}
