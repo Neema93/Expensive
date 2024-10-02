@@ -8,7 +8,6 @@ import PrivateRoute from './PrivateRoute';
 import Login from '../components/Login';
 import UserForm from '../components/UserForm';
 import NotFound from '../components/NotFound';
-
 const AppRouter = () => (
    <Router>
    <Routes>
