@@ -8,10 +8,10 @@ const ExpenseDashbordPage = () =>{
     getExpenses();
   }, []);
 return(
-    <div>
-      
+    <div className="container">
+        <h1>Expense List</h1>
       <ExpenseListFilters />
-      <ConnectedExpenseList  />
+      <ConnectedExpenseList />
     </div>
   )};
   const mapDispatchToProps = (dispatch) => ({
