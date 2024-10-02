@@ -1,11 +1,11 @@
 
 import { Link } from 'react-router-dom';
 const ExpenseListItem =({ id, description, amount, createdat}) =>(
-    <div>
+    <div className='list'>
         <Link to={`/edit/${id}/${description}/${amount}/${createdat}`}> 
-        <h3>{description}</h3>
+        <span>{description}</span>
         </Link>
-        <p>{amount} - {createdat}</p>
+        <span>{amount} - {createdat}</span>
         {/* <button onClick={() => {
             dispatch(removeExpense({id}));
         }}>Remove</button> */}

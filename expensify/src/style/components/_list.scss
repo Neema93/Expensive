@@ -1,0 +1,15 @@
+.list{
+    background-color: #ffffff; /* White background for each item */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 5px; /* Rounded corners */
+    margin: 10px 0; /* Space between items */
+    padding: 10px 15px; /* Padding inside each item */
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Space between name and amount */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: transform 0.2s; 
+    
+}
+.list:hover {
+    transform: scale(1.02); /* Slightly increase size on hover */
+}

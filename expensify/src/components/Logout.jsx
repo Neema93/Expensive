@@ -1,5 +1,3 @@
-// components/Logout.js
-
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { logout } from '../actions/auth';
@@ -14,7 +12,7 @@ const Logout = () => {
   };
 
   return (
-    <button className="login_button" onClick={handleLogout}>Logout</button>
+    <button className="logout_button" onClick={handleLogout}>Logout</button>
   );
 };
 
