@@ -1,5 +1,5 @@
-import React, { useState,useEffect } from "react";
-import { useDispatch,  connect, useSelector } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useDispatch, connect, useSelector } from "react-redux";
 import { login } from "../actions/auth";
 import { useNavigate } from "react-router-dom";
 const Login = () => {
@@ -10,25 +10,24 @@ const Login = () => {
   const isLoggedIn = useSelector((state) => state.auth.isAuthenticated);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setCredentials({ ...credentials, [name]: value });
   };
-   const handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-   dispatch(login(credentials));
-      
+    dispatch(login(credentials));
   };
   useEffect(() => {
     if (isLoggedIn) {
-        navigate('/dashboard')
+      navigate("/dashboard");
     }
-}, [isLoggedIn]);
+  }, [isLoggedIn]);
 
   const handelUser = () => {
     navigate("/user");
-  }
+  };
 
   return (
     <div className="box-layout">
@@ -53,12 +52,14 @@ const Login = () => {
           <button className="login_button" type="submit">
             Login
           </button>
-          
         </form>
-        <button className="login_button" onClick={handelUser} > New User</button>
+        <button className="login_button" onClick={handelUser}>
+          {" "}
+          New User
+        </button>
         {/* {error && <p>{error}</p>} */}
       </div>
     </div>
   );
 };
-export default connect() (Login);
+export default connect()(Login);

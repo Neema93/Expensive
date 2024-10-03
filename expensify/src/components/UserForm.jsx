@@ -37,7 +37,9 @@ const UserForm = () => {
           placeholder="Enter user Password"
           required
         />
-        <button className='form_button'type="submit">{"Add"} User</button>
+        <button className="form_button" type="submit">
+          AddUser
+        </button>
       </form>
     </div>
   );

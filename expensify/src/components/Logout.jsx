@@ -1,10 +1,10 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
-import { logout } from '../actions/auth';
+import React from "react";
+import { useDispatch } from "react-redux";
+import { logout } from "../actions/auth";
 import { useNavigate } from "react-router-dom";
 const Logout = () => {
   const dispatch = useDispatch();
- const navigate = useNavigate();
+  const navigate = useNavigate();
   const handleLogout = () => {
     dispatch(logout());
 
@@ -12,7 +12,9 @@ const Logout = () => {
   };
 
   return (
-    <button className="logout_button" onClick={handleLogout}>Logout</button>
+    <button className="logout_button" onClick={handleLogout}>
+      Logout
+    </button>
   );
 };
 

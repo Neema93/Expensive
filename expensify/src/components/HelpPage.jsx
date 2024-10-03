@@ -1,7 +1,2 @@
-
-const HelpPage = () => (
-    <div>
-      This is Help.
-    </div>
-  );
-  export default HelpPage;
+const HelpPage = () => <div>This is Help.</div>;
+export default HelpPage;

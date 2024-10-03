@@ -20,25 +20,26 @@ const EditPage = (props) => {
   console.log("edit", newexpense);
   return (
     <>
-    <div className="container">
-      <h1>Edit Expenses</h1>
-      <ExpenseForm
-        expense={newexpense}
-        onSubmit={(expense) => {
-          props.dispatch(editExpense(newexpense.id, expense));
-          props.dispatch(getExpenses());
-          doStuff();
-        }}
-      />
-      
-      <button className='form_button'
-        onClick={() => {
-          props.dispatch(removeExpense({ id: newexpense.id }));
-          doStuff();
-        }}
-      >
-        Remove
-      </button>
+      <div className="container">
+        <h1>Edit Expenses</h1>
+        <ExpenseForm
+          expense={newexpense}
+          onSubmit={(expense) => {
+            props.dispatch(editExpense(newexpense.id, expense));
+            props.dispatch(getExpenses());
+            doStuff();
+          }}
+        />
+
+        <button
+          className="form_button"
+          onClick={() => {
+            props.dispatch(removeExpense({ id: newexpense.id }));
+            doStuff();
+          }}
+        >
+          Remove
+        </button>
       </div>
     </>
   );
