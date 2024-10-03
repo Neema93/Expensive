@@ -1,19 +1,23 @@
 const expensesReduserDefaultState =[];
+
 // eslint-disable-next-line import/no-anonymous-default-export
 export default(state =expensesReduserDefaultState , action) => {
     switch(action.type){ 
         case 'GET_EXPENSES':
-            return [...state,action.payload];
+            return (
+                [action.payload]
+            )
+        
         case 'ADD_EXPENSE':
                return  [...state,action.payload];
         case 'REMOVE_EXPENSE':
-            return state.filter(({id}) => id !== action.id  )
+            return state.filter(({id}) => id !== action.payload.id  )
         case 'EDIT_EXPENSE':
             return state.map((expense)=>{
-                if(expense.id === action.id){
+                if(expense.id === action.payload.id){
                     return{
                         ...expense,
-                        ...action.update
+                        ...action.payload.update
                     }
                 }else {
                     return expense;

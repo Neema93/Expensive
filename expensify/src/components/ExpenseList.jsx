@@ -3,8 +3,6 @@ import ExpenseListItem from "./ExpenseListItem";
 import selectExpenses from "../selectors/expenses";
 const ExpenseList = (props) => {
   const { expenses } = props;
-
-  console.log(expenses);
   return (
     <div>
       {expenses.map((expense) => {
@@ -15,6 +13,7 @@ const ExpenseList = (props) => {
 };
 const mapStateToProps = (state) => {
   const flatExpenses = state.expenses[0] || [];
+
   return {
     expenses: selectExpenses(flatExpenses, state.filters),
   };

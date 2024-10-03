@@ -47,7 +47,7 @@ app.get("/expenses/:userId",async(req,res) =>{
   try {
     const { userId } = req.params;
     const getExpenses = await pool.query("SELECT * FROM expenses WHERE user_id = $1 ",[ userId ]);
-    console.log(getExpenses.rows);
+    // console.log(getExpenses.rows);
     res.json(getExpenses.rows);
 
   } catch (err) {
@@ -73,6 +73,7 @@ app.put("/expenses/:id",async(req,res) => {
     const { description } = req.body;
     const { amount } = req.body;
     const updateexpenses = await pool.query("UPDATE expenses SET description = $1 , amount = $2 WHERE id = $3",[description,amount,id]);
+    console.log(updateexpenses.rows)
     res.json(updateexpenses.rows);
   } catch (err) {
     console.log(err.message);

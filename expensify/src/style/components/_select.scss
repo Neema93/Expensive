@@ -21,12 +21,3 @@
     border-color: #2980b9; /* Change border color on focus */
 }
 
-/* Optional: Add a custom arrow */
-.custom-select::after {
-    content: '▼'; /* Arrow character */
-    position: absolute; /* Positioning */
-    right: 10px; /* Distance from right */
-    top: 50%; /* Center vertically */
-    transform: translateY(-50%); /* Adjust position */
-    pointer-events: none; /* Prevent hover events */
-}
